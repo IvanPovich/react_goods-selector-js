@@ -56,22 +56,22 @@ export const App = () => {
       <table className="table">
         <tbody>
           {goods.map(good => {
-            const isSelect = selectGood === good;
+            const isSelects = selectGood === good;
 
             return (
               <tr
                 key={good}
                 data-cy="Good"
-                className={isSelect ? 'has-background-success-light' : null}
+                className={isSelects ? 'has-background-success-light' : null}
               >
                 <td>
                   <button
-                    data-cy={isSelect ? 'RemoveButton' : 'AddButton'}
+                    data-cy={isSelects ? 'RemoveButton' : 'AddButton'}
                     type="button"
-                    className={`button ${isSelect ? 'is-info' : null}`}
-                    onClick={() => handleSelection(isSelect ? null : good)}
+                    className={`button ${isSelects ? 'is-info' : null}`}
+                    onClick={() => handleSelection(isSelects ? null : good)}
                   >
-                    {isSelect ? '-' : '+'}
+                    {isSelects ? '-' : '+'}
                   </button>
                 </td>
 

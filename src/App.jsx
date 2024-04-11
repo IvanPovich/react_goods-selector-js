@@ -16,28 +16,15 @@ export const goods = [
 ];
 
 export const App = () => {
-  const [selected, setSelected] = useState(true);
-  const [selectGood, setSelectGood] = useState('Jam');
-
-  function handleSelection(product) {
-    let select = true;
-
-    if (!product) {
-      select = false;
-    }
-
-    setSelectGood(product);
-    setSelected(select);
-  }
+  const [selectGood, setSelectedGood] = useState('Jam');
 
   const handleResetClick = () => {
-    setSelected('');
-    setSelectGood('');
+    setSelectedGood('');
   };
 
   return (
     <main className="section container">
-      {selected ? (
+      {selectGood ? (
         <h1 className="title is-flex is-align-items-center">
           {selectGood} is selected
           <button
@@ -56,22 +43,22 @@ export const App = () => {
       <table className="table">
         <tbody>
           {goods.map(good => {
-            const isSelects = selectGood === good;
+            const isSelected = selectGood === good;
 
             return (
               <tr
                 key={good}
                 data-cy="Good"
-                className={isSelects ? 'has-background-success-light' : null}
+                className={isSelected ? 'has-background-success-light' : ''}
               >
                 <td>
                   <button
-                    data-cy={isSelects ? 'RemoveButton' : 'AddButton'}
+                    data-cy={isSelected ? 'RemoveButton' : 'AddButton'}
                     type="button"
-                    className={`button ${isSelects ? 'is-info' : null}`}
-                    onClick={() => handleSelection(isSelects ? null : good)}
+                    className={`button ${isSelected ? 'is-info' : ''}`}
+                    onClick={() => setSelectedGood(isSelected ? '' : good)}
                   >
-                    {isSelects ? '-' : '+'}
+                    {isSelected ? '-' : '+'}
                   </button>
                 </td>
 
